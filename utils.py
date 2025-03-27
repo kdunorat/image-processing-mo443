@@ -22,10 +22,8 @@ def verifica_dtype(img):
 
     # Verificar dtype
     print("Tipo de dado (dtype):", img.dtype)
-
-    # Verificar valores mínimo e máximo
-    print("Valor mínimo:", np.min(img))
-    print("Valor máximo:", np.max(img))
+    
+    return [np.min(img), np.max(img)]
 
 
 def gaussian_kernel(size, sigma):
