@@ -15,7 +15,8 @@ def apply_linear_transform(img, t_filter, bright = 1):
     flat_transformed = np.dot(flat_img, t_filter.T)
 
     # Diminui a intensidade do brilho da imagens
-    flat_transformed = np.multiply(flat_transformed, bright)
+    if bright != 1:
+        flat_transformed = np.multiply(flat_transformed, bright)
     
     # Retorna ao formato tridimensional
     transformed_image = flat_transformed.reshape(img.shape[0], img.shape[1], img.shape[2])
