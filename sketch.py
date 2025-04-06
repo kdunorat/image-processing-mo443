@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
+from skimage import io
 import numpy as np
 from scipy.signal import convolve2d
 from utils import verifica_dtype, gaussian_kernel
 
 # Ler a imagem
-watch = plt.imread('images/watch.png')
+watch = io.imread('images/watch.png')
 
 # Verifica intervalo de pixels
 min_value, max_value = verifica_dtype(watch)

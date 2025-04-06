@@ -1,21 +1,4 @@
 import numpy as np
-from skimage import io
-
-
-def bits_por_pixel(img):
-
-    # Tipo de dado por canal (ex: uint8 = 8 bits)
-    bits_per_channel = img.dtype.itemsize * 8
-
-    # Número de canais (ex: 1 para cinza, 3 para RGB)
-    num_channels = 1 if img.ndim == 2 else img.shape[2]
-
-    # Bits por pixel
-    bpp = bits_per_channel * num_channels
-
-    print(f'Bits por canal: {bits_per_channel}')
-    print(f'Número de canais: {num_channels}')
-    print(f'Bits por pixel: {bpp}')
     
 
 def verifica_dtype(img):

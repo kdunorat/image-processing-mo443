@@ -4,7 +4,6 @@ import numpy as np
 baboon_mono = plt.imread('images/baboon_monocromatica.png')
 mosaic_order = np.array([6,11,13,3,8,16,1,9,12,14,2,7,4,15,10,5])
 
-
 def get_coordinates(index, image_size, grid):
     """Retorna as coordenadas do pedaço de n pixels de indíce especificado
     index: indice do pedaço
