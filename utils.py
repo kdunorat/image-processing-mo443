@@ -1,8 +1,9 @@
 import numpy as np
-    
+import matplotlib.pyplot as plt
+
 
 def verifica_dtype(img):
-
+    """Printa o data type da imagem e retorna o valor mínimo e o máximo de intensidade"""
     # Verificar dtype
     print("Tipo de dado (dtype):", img.dtype)
     
@@ -23,4 +24,16 @@ def gaussian_kernel(size, sigma):
 
     # Normaliza o kernel (soma de todos os valores dá 1)
     return kernel / np.sum(kernel)
+
+def plot_image(image, title, color = False):
+    cmap = None # Define cmap como None por padrão
+    if not color:
+        cmap = 'gray'
+    plt.imshow(image, cmap=cmap)
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+
+
 

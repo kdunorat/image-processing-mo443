@@ -1,11 +1,8 @@
 import matplotlib.pyplot as plt
-import numpy as np
-from utils import verifica_dtype, bits_por_pixel
-
-baboon_mono = plt.imread('images/baboon_monocromatica.png')
-baboon_mono = np.clip(baboon_mono * 255, 0, 255).astype(np.uint8)
+from skimage import io
 
 
+baboon_mono = io.imread('images/baboon_monocromatica.png')
 bit_channels_list = []
 
 for i in range(8):  # Para cada bit de 0 a 7

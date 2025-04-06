@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
+from skimage import io, color
 import numpy as np
 
 # Ler a imagem
-baboon_mono = plt.imread('images/baboon_monocromatica.png')
+spider = io.imread('images/spider.png')
+spider_mono = color.rgb2gray(spider)
 
 def gamma_correction(image, gamma):
     # Normaliza para [0, 1]
@@ -17,12 +19,12 @@ def gamma_correction(image, gamma):
 if __name__ == '__main__':
     # Testar diferentes gamas
     gammas = [1.5, 2.5, 3.5]
-    results = [gamma_correction(baboon_mono, g) for g in gammas]
+    results = [gamma_correction(spider_mono, g) for g in gammas]
 
 
     plt.figure(figsize=(16, 4))
     plt.subplot(1, 4, 1)
-    plt.imshow(baboon_mono, cmap='gray')
+    plt.imshow(spider_mono, cmap='gray')
     plt.title('Original')
     plt.axis('off')
 

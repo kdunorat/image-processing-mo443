@@ -4,7 +4,7 @@ import numpy as np
 from scipy.signal import convolve2d
 
 
-guine = io.imread('images/BRONZE_Ngar-Shun-Victor-Wong_The-safari-beauty.png')
+guine = io.imread('images/guine.png')
 gray_guine = color.rgb2gray(guine)
 # Filters
 
