@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
+from skimage import io
 import numpy as np
-
+from utils import plot_image
 
 city = plt.imread('images/city.png')
-city = np.clip(city * 255, 0, 255)
 
 # Negativo
 negative_city = abs(city-255)
@@ -29,6 +29,4 @@ city_reflex_full[city_half_size:, :] = city_reflex_half
 # Espelhamento vertical
 city_upside = city[::-1, :]
 
-plt.imshow(city_upside, cmap='gray')
-plt.axis('off')
-plt.show()
+

@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from skimage import io, color
 import numpy as np
 from scipy.signal import convolve2d
+from utils import plot_in_grid
 
 
 guine = io.imread('images/guine.png')
@@ -91,24 +92,17 @@ h11_transformed = apply_filter(gray_guine, h11)
 # Combinação usando raiz da soma dos quadrados
 h3_h4_combined = np.sqrt(h3_transformed**2 + h4_transformed**2)
 
+titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10', 'h11']
+
+transformed = [h1_transformed, h2_transformed, h3_transformed, h4_transformed, h5_transformed,
+               h6_transformed, h7_transformed, h8_transformed, h9_transformed, h10_transformed,
+               h11_transformed]
+
+# Exibe os filtros h1 ao h11 em grid
+plot_in_grid(transformed, titles=titles, n_columns=4, size=(14, 10))
+
+# Exibindo a combinação h3 + h4
 plt.imshow(h3_h4_combined, cmap='gray')
+plt.title('√(h3² + h4²)')
 plt.axis('off')
 plt.show()
-# # Exibir resultados
-# fig, axs = plt.subplots(3, 4, figsize=(16, 10))
-# axs = axs.ravel()
-# titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10', 'h11']
-#
-# transformed = [h1_transformed, h2_transformed, h3_transformed, h4_transformed, h5_transformed,
-#                h6_transformed, h7_transformed, h8_transformed, h9_transformed, h10_transformed,
-#                h11_transformed]
-#
-# for i in range(11):
-#     axs[i].imshow(transformed[i], cmap='gray')
-#     axs[i].set_title(titles[i])
-#     axs[i].axis('off')
-#
-# axs[11].axis('off')
-#
-# plt.tight_layout()
-# plt.show()

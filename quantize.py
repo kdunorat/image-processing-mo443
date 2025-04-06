@@ -1,8 +1,20 @@
-import matplotlib.pyplot as plt
-import numpy as np
 
-baboon_mono = plt.imread('images/baboon_monocromatica.png')
-baboon_mono = np.clip(baboon_mono * 255, a_min=0, a_max=255).astype(np.uint8)
+from skimage import io
+from utils import plot_in_grid
 
-def quantize_img(img, levels: int):
-    pass
+baboon_mono = io.imread('images/baboon_monocromatica.png')
+
+
+# Função de quantização
+def quantize(img, levels):
+    fator = 256 // levels
+    return (img // fator) * fator
+
+# Lista dos niveis
+levels_list = [256, 128, 64, 32, 16, 8, 4, 2]
+images = [baboon_mono if n == 256 else quantize(baboon_mono, n) for n in levels_list]
+
+titles = [f'{l} níveis' for l in levels_list]
+
+# Plota as imagens numa grade 3x3
+plot_in_grid(images, titles=titles, n_columns=3)
