@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
-from skimage import io
+from skimage import io, img_as_ubyte
+from skimage.io import imsave
 import numpy as np
 from scipy.signal import convolve2d
-from utils import verifica_dtype, plot_in_grid, plot_image
+from utils import verifica_dtype, plot_in_grid, plot_image, get_out_path
 
 
 def gaussian_kernel(size, sigma):
@@ -23,7 +24,7 @@ def gaussian_kernel(size, sigma):
 
 if __name__ == '__main__':
     # Ler a imagem
-    watch = io.imread('images/crimson.png')
+    watch = io.imread('images/watch.png')
 
     # Verifica intervalo de pixels
     print(verifica_dtype(watch))
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     # Transformar em escala de cinza
     gray_watch = 0.2126 * watch[:, :, 0] + 0.7152 * watch[:, :, 1] + 0.0722 * watch[:, :, 2]
 
-
+    gray_watch = gray_watch / 255.0
     # Criando o kernel
     kernel = gaussian_kernel(31, 5)
 
@@ -44,7 +45,7 @@ if __name__ == '__main__':
     # Evita a perda de contraste
     watch_sketch = np.clip(watch_sketch, 0, 1)
 
-    # Mostra as 4 imagens lado a lado
+    # Mostra as 3 imagens lado a lado
     plt.figure(figsize=(12, 8))
 
     plt.subplot(1, 3, 1)
@@ -64,3 +65,7 @@ if __name__ == '__main__':
 
     plt.tight_layout()
     plt.show()
+
+    imsave(get_out_path('gray_watch'), img_as_ubyte(gray_watch))
+    imsave(get_out_path('blurred_watch'), img_as_ubyte(blurred_watch))
+    imsave(get_out_path('watch_sketch'), img_as_ubyte(watch_sketch))
