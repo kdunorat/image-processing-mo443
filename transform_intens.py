@@ -1,8 +1,7 @@
 from skimage import io, img_as_ubyte
 from skimage.io import imsave
 import numpy as np
-import matplotlib.pyplot as plt
-from utils import plot_in_grid, plot_image, verifica_dtype, get_out_path
+from utils import plot_in_grid, verifica_dtype, get_out_path
 
 city = io.imread('images/city.png')
 print(verifica_dtype(city))
@@ -40,7 +39,7 @@ titles = [
     'Original', 'Negativo', 'Intensidade 100–200',
     'Linhas pares invertidas', 'Espelhamento horizontal', 'Espelhamento vertical'
 ]
-plot_image(negative_city)
+
 # Plota em grade com 3 colunas
 plot_in_grid(images, titles=titles, n_columns=3, size=(15, 10))
 for img, title in zip(images, titles):

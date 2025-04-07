@@ -26,7 +26,7 @@ images = [
 ]
 titles = [
     'Imagem A (crimson)', 'Imagem B (division_bell)',
-    '0.2*A + 0.8*B', '0.5*A + 0.5*B', '0.8*A + 0.2*B'
+    '0.2A + 0.8B', '0.5A + 0.5B', '0.8A + 0.2B'
 ]
 
 for img, title in zip(images, titles):

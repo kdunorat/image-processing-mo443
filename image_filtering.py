@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
-from skimage import io, color
+from skimage import io, color, img_as_ubyte
+from skimage.io import imsave
 import numpy as np
 from scipy.signal import convolve2d
-from utils import plot_in_grid, verifica_dtype
+from utils import plot_in_grid, get_out_path, verifica_dtype
 
 
-guine = plt.imread('images/guine.png')
+guine = io.imread('images/guine.png')
 gray_guine = color.rgb2gray(guine)
 
 # Filters
@@ -95,17 +95,17 @@ h11_transformed = apply_filter(gray_guine, h11)
 # Combinação usando raiz da soma dos quadrados
 h3_h4_combined = np.sqrt(h3_transformed**2 + h4_transformed**2)
 
-titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10', 'h11']
+titles = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10', 'h11', 'h3_h4_combined']
 
 transformed = [h1_transformed, h2_transformed, h3_transformed, h4_transformed, h5_transformed,
                h6_transformed, h7_transformed, h8_transformed, h9_transformed, h10_transformed,
-               h11_transformed]
+               h11_transformed, h3_h4_combined]
 
 # Exibe os filtros h1 ao h11 em grid
 plot_in_grid(transformed, titles=titles, n_columns=4, size=(14, 10))
-
-# Exibindo a combinação h3 + h4
-plt.imshow(h3_h4_combined, cmap='gray')
-plt.title('√(h3² + h4²)')
-plt.axis('off')
-plt.show()
+print(verifica_dtype(h1_transformed))
+for img, title in zip(transformed, titles):
+    # Normaliza para 0–1 independente dos valores negativos/positivos
+    img_norm = img - np.min(img)
+    img_norm = img_norm / np.max(img_norm)
+    imsave(get_out_path(title), img_as_ubyte(img_norm))
