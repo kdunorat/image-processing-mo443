@@ -1,6 +1,7 @@
-from skimage import io, color
+from skimage import io, color, img_as_ubyte
+from skimage.io import imsave
 from skimage.transform import resize
-from utils import plot_image, plot_in_grid
+from utils import verifica_dtype, get_out_path
 
 crimson = io.imread('images/crimson.png')
 division_bell = io.imread('images/division_bell.png')
@@ -27,5 +28,7 @@ titles = [
     'Imagem A (crimson)', 'Imagem B (division_bell)',
     '0.2*A + 0.8*B', '0.5*A + 0.5*B', '0.8*A + 0.2*B'
 ]
-# Exibir em grade com 3 colunas
-plot_in_grid(images, titles=titles, n_columns=3, size=(16, 8))
+
+for img, title in zip(images, titles):
+    imsave(get_out_path(title), img_as_ubyte(img))
+

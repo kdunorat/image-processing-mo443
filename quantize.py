@@ -1,5 +1,6 @@
-from skimage import io
-from utils import plot_in_grid
+from skimage import io, img_as_ubyte
+from skimage.io import imsave
+from utils import plot_in_grid, get_out_path
 
 baboon_mono = io.imread('images/baboon_monocromatica.png')
 
@@ -17,3 +18,6 @@ titles = [f'{l} níveis' for l in levels_list]
 
 # Plota as imagens numa grade 3x3
 plot_in_grid(images, titles=titles, n_columns=3)
+
+for img, title in zip(images, titles):
+    imsave(get_out_path(title), img_as_ubyte(img))
