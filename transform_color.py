@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from skimage import io, img_as_ubyte
 from skimage.io import imsave
 import numpy as np

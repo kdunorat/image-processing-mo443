@@ -2,7 +2,7 @@ from skimage import io, color
 from skimage.io import imsave
 from skimage import img_as_ubyte
 import numpy as np
-from utils import get_out_path, verifica_dtype
+from utils import get_out_path
 
 
 spider = io.imread('images/spider.png')

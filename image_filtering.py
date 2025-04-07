@@ -2,7 +2,7 @@ from skimage import io, color, img_as_ubyte
 from skimage.io import imsave
 import numpy as np
 from scipy.signal import convolve2d
-from utils import plot_in_grid, get_out_path, verifica_dtype
+from utils import get_out_path
 
 
 guine = io.imread('images/guine.png')
@@ -101,9 +101,7 @@ transformed = [h1_transformed, h2_transformed, h3_transformed, h4_transformed, h
                h6_transformed, h7_transformed, h8_transformed, h9_transformed, h10_transformed,
                h11_transformed, h3_h4_combined]
 
-# Exibe os filtros h1 ao h11 em grid
-plot_in_grid(transformed, titles=titles, n_columns=4, size=(14, 10))
-print(verifica_dtype(h1_transformed))
+# Salva os resultados
 for img, title in zip(transformed, titles):
     # Normaliza para 0–1 independente dos valores negativos/positivos
     img_norm = img - np.min(img)
