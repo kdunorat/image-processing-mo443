@@ -22,7 +22,7 @@ if __name__ == '__main__':
     results = [gamma_correction(spider_mono, g) for g in gammas]
 
 
-    plt.figure(figsize=(16, 4))
+    plt.figure(figsize=(16, 8))
     plt.subplot(1, 4, 1)
     plt.imshow(spider_mono, cmap='gray')
     plt.title('Original')

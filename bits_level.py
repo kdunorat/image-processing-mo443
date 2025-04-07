@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from skimage import io
 from utils import plot_in_grid
 

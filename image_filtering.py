@@ -2,11 +2,12 @@ import matplotlib.pyplot as plt
 from skimage import io, color
 import numpy as np
 from scipy.signal import convolve2d
-from utils import plot_in_grid
+from utils import plot_in_grid, verifica_dtype
 
 
-guine = io.imread('images/guine.png')
+guine = plt.imread('images/guine.png')
 gray_guine = color.rgb2gray(guine)
+
 # Filters
 
 h1 = np.array([
@@ -74,7 +75,10 @@ h11 = np.array([
 ])
 
 def apply_filter(image, kernel):
-    return convolve2d(image, kernel, mode='same', boundary='symm')
+    transformed_image = convolve2d(image, kernel, mode='same', boundary='symm')
+
+    return transformed_image
+
 
 # Aplicando os filtros
 h1_transformed = apply_filter(gray_guine, h1)
@@ -88,7 +92,6 @@ h8_transformed = apply_filter(gray_guine, h8)
 h9_transformed = apply_filter(gray_guine, h9)
 h10_transformed = apply_filter(gray_guine, h10)
 h11_transformed = apply_filter(gray_guine, h11)
-
 # Combinação usando raiz da soma dos quadrados
 h3_h4_combined = np.sqrt(h3_transformed**2 + h4_transformed**2)
 
