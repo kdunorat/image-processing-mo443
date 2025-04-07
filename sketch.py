@@ -3,7 +3,7 @@ from skimage import io, img_as_ubyte
 from skimage.io import imsave
 import numpy as np
 from scipy.signal import convolve2d
-from utils import verifica_dtype, plot_in_grid, plot_image, get_out_path
+from utils import verifica_dtype, get_out_path
 
 
 def gaussian_kernel(size, sigma):
@@ -32,7 +32,9 @@ if __name__ == '__main__':
     # Transformar em escala de cinza
     gray_watch = 0.2126 * watch[:, :, 0] + 0.7152 * watch[:, :, 1] + 0.0722 * watch[:, :, 2]
 
+    # Normaliza
     gray_watch = gray_watch / 255.0
+
     # Criando o kernel
     kernel = gaussian_kernel(31, 5)
 

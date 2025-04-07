@@ -1,6 +1,7 @@
-import matplotlib.pyplot as plt
-from skimage import io
+from skimage import io, img_as_ubyte
+from skimage.io import imsave
 import numpy as np
+from utils import get_out_path
 
 
 pele = io.imread('images/1970_copa_pele_abraco.png')
@@ -29,19 +30,5 @@ def apply_linear_transform(img, t_filter, bright = 1):
 
 
 if __name__ == '__main__':
-
     old_pele = apply_linear_transform(img=pele, t_filter=old_filter)
-
-    plt.figure(figsize=(16,4))
-    plt.subplot(1,2,1)
-    plt.imshow(pele)
-    plt.title('Original')
-    plt.axis('off')
-
-    plt.subplot(1,2,2)
-    plt.imshow(old_pele)
-    plt.title('Após a transformação')
-    plt.axis('off')
-
-
-    plt.show()
+    imsave(get_out_path('old_pele'), img_as_ubyte(old_pele))
