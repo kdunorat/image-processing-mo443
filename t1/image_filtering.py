@@ -5,7 +5,7 @@ from scipy.signal import convolve2d
 from utils import get_out_path
 
 
-guine = io.imread('images/guine.png')
+guine = io.imread('../images/guine.png')
 gray_guine = color.rgb2gray(guine)
 
 # Filters

@@ -21,3 +21,4 @@ def plot_image(image, title = '', color = False):
 
 def get_out_path(img_name: str):
     return f'output/{img_name}.png'
+

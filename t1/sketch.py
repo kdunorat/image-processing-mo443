@@ -24,7 +24,7 @@ def gaussian_kernel(size, sigma):
 
 if __name__ == '__main__':
     # Ler a imagem
-    watch = io.imread('images/watch.png')
+    watch = io.imread('../images/watch.png')
 
     # Verifica intervalo de pixels
     print(verifica_dtype(watch))

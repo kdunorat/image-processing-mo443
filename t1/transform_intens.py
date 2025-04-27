@@ -4,7 +4,7 @@ import numpy as np
 from utils import verifica_dtype, get_out_path
 
 
-city = io.imread('images/city.png')
+city = io.imread('../images/city.png')
 print(verifica_dtype(city))
 # Negativo
 negative_city = 255 - city

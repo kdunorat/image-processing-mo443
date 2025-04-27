@@ -2,7 +2,7 @@ from skimage import io, img_as_ubyte
 from skimage.io import imsave
 from utils import get_out_path
 
-baboon_mono = io.imread('images/baboon_monocromatica.png')
+baboon_mono = io.imread('../images/baboon_monocromatica.png')
 
 
 # Função de quantização

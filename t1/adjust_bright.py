@@ -5,7 +5,7 @@ import numpy as np
 from utils import get_out_path
 
 
-spider = io.imread('images/spider.png')
+spider = io.imread('../images/spider.png')
 
 spider_mono = color.rgb2gray(spider)
 

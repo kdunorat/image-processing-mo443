@@ -3,7 +3,7 @@ from skimage.io import imsave
 import numpy as np
 from utils import get_out_path
 
-baboon_mono = io.imread('images/baboon_monocromatica.png')
+baboon_mono = io.imread('../images/baboon_monocromatica.png')
 mosaic_order = np.array([6,11,13,3,8,16,1,9,12,14,2,7,4,15,10,5])
 
 def get_coordinates(index, image_size, grid):

@@ -3,8 +3,8 @@ from skimage.io import imsave
 from skimage.transform import resize
 from utils import verifica_dtype, get_out_path
 
-crimson = io.imread('images/crimson.png')
-division_bell = io.imread('images/division_bell.png')
+crimson = io.imread('../images/crimson.png')
+division_bell = io.imread('../images/division_bell.png')
 crimson_mono = color.rgb2gray(crimson)
 division_bell_mono = color.rgb2gray(division_bell)
 # Ajustando o tamanho de uma das imagens
