@@ -20,5 +20,7 @@ def plot_image(image, title = '', color = False):
     plt.show()
 
 def get_out_path(img_name: str):
-    return f'output/{img_name}.png'
+    return f'../output_t1/{img_name}.png'
+
+
 

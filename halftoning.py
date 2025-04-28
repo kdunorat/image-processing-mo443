@@ -1,6 +1,8 @@
 import numpy as np
 from skimage import io
 from skimage.util import img_as_ubyte
+from skimage.metrics import mean_squared_error
+
 
 technics = {
     "floyd_steinberg": [
@@ -40,11 +42,12 @@ technics = {
     ]
 }
 
-def error_diffusion(img, technic_name, zigue_zague = False):
+
+def error_diffusion(image, technic_name, zigue_zague = False):
     """Aplica difusão de erro (0/255) usando a tecnica escolhida."""
     halftoning_tech = technics[technic_name]
-    height, width = img.shape
-    new_image = img.astype(np.float32).copy()
+    height, width = image.shape
+    new_image = image.astype(np.float32).copy()
 
     for y in range(height):
         if zigue_zague:
@@ -74,17 +77,21 @@ def error_diffusion(img, technic_name, zigue_zague = False):
     # retorna já normalizada
     return new_image / 255.0
 
-def apply_all_halftones(img, zigue_zague = True):
+
+def apply_all_halftones(image, zigue_zague = True):
     # Executa as 6 tecnicas e devolve um dicionário {nome_tecnica: imagem_resultante}
     result = {}
     for name in technics:
-        result[name] = error_diffusion(img, name, zigue_zague)
+        result[name] = error_diffusion(image, name, zigue_zague)
     return result
 
 
 if __name__ == "__main__":
-    baboon = io.imread("./images/baboon_monocromatica.png")   # uint8 grayscale
-    results = apply_all_halftones(baboon)
+    baboon_mono = io.imread("./images/baboon_monocromatica.png")
+    results = apply_all_halftones(baboon_mono)
     # salvando
-    for name, img_ht in results.items():
-        io.imsave(f"./output_t2/{name}.png", img_as_ubyte(img_ht))
+    for name, image_ht in results.items():
+        # Calcula mse
+        mse = mean_squared_error(baboon_mono / 255.0, image_ht)
+        io.imsave(f"./output_t2/{name}.png", img_as_ubyte(image_ht))
+        print(f"{name}: {mse:.3f}")

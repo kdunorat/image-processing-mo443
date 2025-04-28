@@ -2,7 +2,7 @@ from skimage import io, color, img_as_ubyte
 from skimage.io import imsave
 import numpy as np
 from scipy.signal import convolve2d
-from utils import get_out_path
+from utils import get_out_path, verifica_dtype
 
 
 guine = io.imread('../images/guine.png')
