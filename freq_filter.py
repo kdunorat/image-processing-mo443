@@ -120,3 +120,11 @@ if __name__ == '__main__':
         io.imsave(save_path_ideal_core, img_as_ubyte(mi))
         io.imsave(save_path_gaussian, img_as_ubyte(img_filtered_gaussian))
         io.imsave(save_path_gaussian_core, img_as_ubyte(mg))
+
+        # fourier da original
+        _, mag_spec, _ = get_fourier_spectra(baboon_mono)
+        mag_spec = mag_spec - mag_spec.min()
+        mag_spec = mag_spec / mag_spec.max()
+        io.imsave(f'{output_dir}/original_spec.png', img_as_ubyte(mg))
+
+

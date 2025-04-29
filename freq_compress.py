@@ -33,8 +33,8 @@ if __name__ == '__main__':
     img_path = './images/guine.png'
     guine = io.imread(img_path)
     gray_guine = color.rgb2gray(guine)
-
-    compressed_guine = compress_image_freq(gray_guine, threshold=100)
+    threshold = 1000
+    compressed_guine = compress_image_freq(gray_guine, threshold=threshold)
     # Normaliza para [0,1]
     compressed_guine = compressed_guine - compressed_guine.min()
     compressed_guine = compressed_guine / compressed_guine.max()
@@ -42,16 +42,16 @@ if __name__ == '__main__':
     # Histogramas
     original_histogram = gray_guine.ravel()
     compressed_histogram = compressed_guine.ravel()
-    io.imsave(f'{output_dir}/compressed_image.png', img_as_ubyte(compressed_guine))
+    io.imsave(f'{output_dir}/compressed_image_{threshold}.png', img_as_ubyte(compressed_guine))
     # Ajusta a escala para o histograma
     gray_guine = gray_guine * 255
     compressed_guine = compressed_guine * 255
     save_histogram(gray_guine.ravel(), f'{output_dir}/histograma_original.png')
-    save_histogram(compressed_guine.ravel(), f'{output_dir}/histograma_comprimido.png')
+    save_histogram(compressed_guine.ravel(), f'{output_dir}/histograma_comprimido_{threshold}.png')
 
     # Calcula tamanhos
     original_size_kb = os.path.getsize(img_path) / 1024
-    compressed_size_kb = os.path.getsize(f'{output_dir}/compressed_image.png') / 1024
+    compressed_size_kb = os.path.getsize(f'{output_dir}/compressed_image_{threshold}.png') / 1024
 
     # Calcula compressão percentual
     compression_ratio = 100 * (1 - compressed_size_kb / original_size_kb)

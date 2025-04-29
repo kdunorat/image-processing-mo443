@@ -95,3 +95,4 @@ if __name__ == "__main__":
         mse = mean_squared_error(baboon_mono / 255.0, image_ht)
         io.imsave(f"./output_t2/{name}.png", img_as_ubyte(image_ht))
         print(f"{name}: {mse:.3f}")
+
