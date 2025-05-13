@@ -87,7 +87,7 @@ def apply_all_halftones(image, zigue_zague = True):
 
 
 if __name__ == "__main__":
-    baboon_mono = io.imread("./images/baboon_monocromatica.png")
+    baboon_mono = io.imread("../images/baboon_monocromatica.png")
     results = apply_all_halftones(baboon_mono)
     # salvando
     for name, image_ht in results.items():

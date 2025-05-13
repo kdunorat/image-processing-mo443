@@ -69,8 +69,8 @@ def create_mask(shape, type_filter, d0, d1=None):
 
 
 if __name__ == '__main__':
-    output_dir = './output_t2'
-    baboon_mono = io.imread('./images/baboon_monocromatica.png')
+    output_dir = '../output_t2'
+    baboon_mono = io.imread('../images/baboon_monocromatica.png')
 
     # Parametros dos filtros
     d0 = 40

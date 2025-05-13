@@ -29,8 +29,8 @@ def save_histogram(data, filename):
 
 
 if __name__ == '__main__':
-    output_dir = './output_t2'
-    img_path = './images/guine.png'
+    output_dir = '../output_t2'
+    img_path = '../images/guine.png'
     guine = io.imread(img_path)
     gray_guine = color.rgb2gray(guine)
     threshold = 1000
