@@ -13,12 +13,13 @@ def parse_cmd():
     p.add_argument("input",  type=Path,   help="imagem de entrada PNG")
     p.add_argument("mode",    type=str,    help="tecnina de alinhamento: hough ou horizontal")
     p.add_argument("output", type=Path,   help="imagem de saída PNG")
-    p.add_argument("--step",   "-s",  type=float, default=0.5)
+    p.add_argument("--step",   "-s",  type=float, default=1)
 
     return p.parse_args()
 
 #--------------------------------------- Horizontal
 def get_profile(image):
+    """Retorna um vetor contendo a soma dos pixels pretos das linhas"""
     height, width = image.shape
     profile = []
     for i in range(height):
@@ -30,6 +31,7 @@ def get_profile(image):
 
 
 def get_rotation_dict(image, theta_1, theta_2, step):
+    """Retorna um dicionário com os angulos e o resultado da função objetivo para eles"""
     angles = np.arange(theta_1, theta_2+step, step)
     diff_sum_dict = {}
 
@@ -51,6 +53,7 @@ def objective_function_horizontal(profile):
 
 #--------------------------------------- Hough
 def hough_accumulator(coords, theta_1, theta_2, step):
+    """Retorna um Counter contendo pares rho e theta e suas contagens"""
     accumulator = Counter()
     degrees  = np.arange(theta_1, theta_2 + step, step)
     thetas = np.deg2rad(degrees)
