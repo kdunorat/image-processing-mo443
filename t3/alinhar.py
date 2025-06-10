@@ -46,7 +46,7 @@ def get_rotation_dict(image, theta_1, theta_2, step):
 
 
 def objective_function_horizontal(profile):
-    "Calcula a soma do quadrado das diferenças do perfil das linhas adjacentes"
+    """Calcula a soma do quadrado das diferenças do perfil das linhas adjacentes"""
     diff = np.diff(profile)
 
     return np.sum(diff**2)

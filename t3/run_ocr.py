@@ -20,8 +20,8 @@ def run_ocr(all_images):
 
 
 if __name__ == '__main__':
-    skewed_path = './imagens_inclinadas'
-    align_path = './output_t3'
+    skewed_path = '../imagens_inclinadas'
+    align_path = '../output_t3'
     all_images = glob.glob(os.path.join(skewed_path, '*'))
     original_names = [os.path.basename(x).split('.')[0] for x in all_images if 'partitura' not in x]
     all_images.extend(glob.glob(os.path.join(align_path, '*')))
