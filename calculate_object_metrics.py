@@ -17,7 +17,6 @@ def analisar_objetos_skimage(img, name):
     regions = measure.regionprops(labeled_img)
     contours = measure.find_contours(labeled_img, 0.5)
 
-    # --- Extração e Impressão de Propriedades ---
     areas = []
     print(f"Resultados da imagem {name}")
     print(f"número de regiões: {len(regions)}\n")
@@ -71,7 +70,6 @@ def analisar_objetos_skimage(img, name):
 
     # Salvando o histograma de areas
     max_area = max(areas) if areas else 0
-    # O limite superior será o maior valor entre a (maior área + 500) e 3500, garantindo que seja sempre > 3000
     upper_bound = max(max_area + 500, 3500)
     bins = [0, 1500, 3000, upper_bound]
     hist_fig, ax_hist = plt.subplots()
